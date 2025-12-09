@@ -1,0 +1,12 @@
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\bin\Debug\MarketAccounting.ViewModels.dll
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\bin\Debug\MarketAccounting.ViewModels.pdb
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.csproj.AssemblyReference.cache
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.csproj.CoreCompileInputs.cache
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.dll
+C:\Users\HjReza\source\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.pdb
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\bin\Debug\MarketAccounting.ViewModels.dll
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\bin\Debug\MarketAccounting.ViewModels.pdb
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.csproj.AssemblyReference.cache
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.csproj.CoreCompileInputs.cache
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.dll
+D:\programing\projects\repos\MarketAccounting\MarketAccounting.ViewModels\obj\Debug\MarketAccounting.ViewModels.pdb

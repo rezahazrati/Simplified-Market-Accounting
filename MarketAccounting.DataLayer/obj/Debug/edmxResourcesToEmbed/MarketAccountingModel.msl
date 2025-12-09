@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MarketAccounting_DBModelStoreContainer" CdmEntityContainer="MarketAccounting_DBEntities">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductBuyCost" ColumnName="ProductBuyCost" />
+          <ScalarProperty Name="ProductSellCost" ColumnName="ProductSellCost" />
+          <ScalarProperty Name="BoughtTillNow" ColumnName="BoughtTillNow" />
+          <ScalarProperty Name="SoldTillNow" ColumnName="SoldTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SlAndBu">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.SlAndBu)">
+        <MappingFragment StoreEntitySet="SlAndBu">
+          <ScalarProperty Name="SlAndBuId" ColumnName="SlAndBuId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="NumberOfProduct" ColumnName="NumberOfProduct" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="NameOfCustomer" ColumnName="NameOfCustomer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeId">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.TypeId)">
+        <MappingFragment StoreEntitySet="TypeId">
+          <ScalarProperty Name="TypeId1" ColumnName="TypeId1" />
+          <ScalarProperty Name="What" ColumnName="What" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.Customers)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BoughtTillNow" ColumnName="BoughtTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PWYBF">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.PWYBF)">
+        <MappingFragment StoreEntitySet="PWYBF">
+          <ScalarProperty Name="PWYBFId" ColumnName="PWYBFId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SoldTillNow" ColumnName="SoldTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

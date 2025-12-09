@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MarketAccounting_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+  <EntityType Name="Product">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+    <Property Name="ProductBuyCost" Type="Int32" Nullable="false" />
+    <Property Name="ProductSellCost" Type="Int32" Nullable="false" />
+    <Property Name="BoughtTillNow" Type="Int32" Nullable="false" />
+    <Property Name="SoldTillNow" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityContainer Name="MarketAccounting_DBEntities" annotation:LazyLoadingEnabled="true">
+    <EntitySet Name="Products" EntityType="Self.Product" />
+    <EntitySet Name="SlAndBu" EntityType="MarketAccounting_DBModel.SlAndBu" />
+    <EntitySet Name="TypeId" EntityType="MarketAccounting_DBModel.TypeId" />
+    <AssociationSet Name="FK_SlAndBu_TypeId" Association="MarketAccounting_DBModel.FK_SlAndBu_TypeId">
+      <End Role="TypeId" EntitySet="TypeId" />
+      <End Role="SlAndBu" EntitySet="SlAndBu" />
+    </AssociationSet>
+    <EntitySet Name="Customers" EntityType="MarketAccounting_DBModel.Customers" />
+    <EntitySet Name="PWYBF" EntityType="MarketAccounting_DBModel.PWYBF" />
+  </EntityContainer>
+  <EntityType Name="SlAndBu">
+    <Key>
+      <PropertyRef Name="SlAndBuId" />
+    </Key>
+    <Property Name="SlAndBuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="TypeId" Type="Int32" Nullable="false" />
+    <Property Name="NumberOfProduct" Type="Int32" Nullable="false" />
+    <Property Name="TotalCost" Type="Int32" Nullable="false" />
+    <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="0" />
+    <NavigationProperty Name="TypeId1" Relationship="MarketAccounting_DBModel.FK_SlAndBu_TypeId" FromRole="SlAndBu" ToRole="TypeId" />
+    <Property Name="NameOfCustomer" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+  </EntityType>
+  <EntityType Name="TypeId">
+    <Key>
+      <PropertyRef Name="TypeId1" />
+    </Key>
+    <Property Name="TypeId1" Type="Int32" Nullable="false" />
+    <Property Name="What" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+    <NavigationProperty Name="SlAndBu" Relationship="MarketAccounting_DBModel.FK_SlAndBu_TypeId" FromRole="TypeId" ToRole="SlAndBu" />
+  </EntityType>
+  <Association Name="FK_SlAndBu_TypeId">
+    <End Type="MarketAccounting_DBModel.TypeId" Role="TypeId" Multiplicity="1" />
+    <End Type="MarketAccounting_DBModel.SlAndBu" Role="SlAndBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeId">
+        <PropertyRef Name="TypeId1" />
+      </Principal>
+      <Dependent Role="SlAndBu">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+    <Property Name="BoughtTillNow" Type="Int32" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PWYBF">
+    <Key>
+      <PropertyRef Name="PWYBFId" />
+    </Key>
+    <Property Name="PWYBFId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+    <Property Name="Name" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+    <Property Name="SoldTillNow" Type="Int32" Nullable="false" />
+  </EntityType>
+</Schema>
