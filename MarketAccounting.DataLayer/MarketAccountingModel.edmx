@@ -1,0 +1,228 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="MarketAccounting_DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MarketAccounting_DBModelStoreContainer">
+    <EntitySet Name="Products" EntityType="MarketAccounting_DBModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SlAndBu" EntityType="MarketAccounting_DBModel.Store.SlAndBu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeId" EntityType="MarketAccounting_DBModel.Store.TypeId" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customers" EntityType="MarketAccounting_DBModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PWYBF" EntityType="MarketAccounting_DBModel.Store.PWYBF" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SlAndBu_TypeId" Association="MarketAccounting_DBModel.Store.FK_SlAndBu_TypeId">
+      <End Role="TypeId" EntitySet="TypeId" />
+      <End Role="SlAndBu" EntitySet="SlAndBu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="ProductBuyCost" Type="int" Nullable="false" />
+    <Property Name="ProductSellCost" Type="int" Nullable="false" />
+    <Property Name="BoughtTillNow" Type="int" Nullable="false" />
+    <Property Name="SoldTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SlAndBu">
+    <Key>
+      <PropertyRef Name="SlAndBuId" />
+    </Key>
+    <Property Name="SlAndBuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="NumberOfProduct" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="NameOfCustomer" Type="nvarchar" Nullable="false" MaxLength="550" />
+  </EntityType>
+  <EntityType Name="TypeId">
+    <Key>
+      <PropertyRef Name="TypeId1" />
+    </Key>
+    <Property Name="TypeId1" Type="int" Nullable="false" />
+    <Property Name="What" Type="nvarchar" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="550" />
+    <Property Name="BoughtTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PWYBF">
+    <Key>
+      <PropertyRef Name="PWYBFId" />
+    </Key>
+    <Property Name="PWYBFId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="550" />
+    <Property Name="SoldTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_SlAndBu_TypeId">
+    <End Role="TypeId" Type="MarketAccounting_DBModel.Store.TypeId" Multiplicity="1" />
+    <End Role="SlAndBu" Type="MarketAccounting_DBModel.Store.SlAndBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeId">
+        <PropertyRef Name="TypeId1" />
+      </Principal>
+      <Dependent Role="SlAndBu">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="MarketAccounting_DBModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="ProductId" />
+          </Key>
+          <Property Name="ProductId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ProductName" Type="String" MaxLength="500" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="ProductBuyCost" Type="Int32" Nullable="false" />
+          <Property Name="ProductSellCost" Type="Int32" Nullable="false" />
+          <Property Name="BoughtTillNow" Type="Int32" Nullable="false" />
+          <Property Name="SoldTillNow" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityContainer Name="MarketAccounting_DBEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Products" EntityType="Self.Product" />
+          <EntitySet Name="SlAndBu" EntityType="MarketAccounting_DBModel.SlAndBu" />
+          <EntitySet Name="TypeId" EntityType="MarketAccounting_DBModel.TypeId" />
+          <AssociationSet Name="FK_SlAndBu_TypeId" Association="MarketAccounting_DBModel.FK_SlAndBu_TypeId">
+            <End Role="TypeId" EntitySet="TypeId" />
+            <End Role="SlAndBu" EntitySet="SlAndBu" />
+          </AssociationSet>
+          <EntitySet Name="Customers" EntityType="MarketAccounting_DBModel.Customers" />
+          <EntitySet Name="PWYBF" EntityType="MarketAccounting_DBModel.PWYBF" />
+        </EntityContainer>
+        <EntityType Name="SlAndBu">
+          <Key>
+            <PropertyRef Name="SlAndBuId" />
+          </Key>
+          <Property Name="SlAndBuId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="TypeId" Type="Int32" Nullable="false" />
+          <Property Name="NumberOfProduct" Type="Int32" Nullable="false" />
+          <Property Name="TotalCost" Type="Int32" Nullable="false" />
+          <Property Name="DateTime" Type="DateTime" Nullable="false" Precision="0" />
+          <NavigationProperty Name="TypeId1" Relationship="MarketAccounting_DBModel.FK_SlAndBu_TypeId" FromRole="SlAndBu" ToRole="TypeId" />
+          <Property Name="NameOfCustomer" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+        </EntityType>
+        <EntityType Name="TypeId">
+          <Key>
+            <PropertyRef Name="TypeId1" />
+          </Key>
+          <Property Name="TypeId1" Type="Int32" Nullable="false" />
+          <Property Name="What" Type="String" Nullable="false" MaxLength="150" FixedLength="false" Unicode="true" />
+          <NavigationProperty Name="SlAndBu" Relationship="MarketAccounting_DBModel.FK_SlAndBu_TypeId" FromRole="TypeId" ToRole="SlAndBu" />
+        </EntityType>
+        <Association Name="FK_SlAndBu_TypeId">
+          <End Type="MarketAccounting_DBModel.TypeId" Role="TypeId" Multiplicity="1" />
+          <End Type="MarketAccounting_DBModel.SlAndBu" Role="SlAndBu" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="TypeId">
+              <PropertyRef Name="TypeId1" />
+            </Principal>
+            <Dependent Role="SlAndBu">
+              <PropertyRef Name="TypeId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="Customers">
+          <Key>
+            <PropertyRef Name="CustomerId" />
+          </Key>
+          <Property Name="CustomerId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CustomerName" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="BoughtTillNow" Type="Int32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="PWYBF">
+          <Key>
+            <PropertyRef Name="PWYBFId" />
+          </Key>
+          <Property Name="PWYBFId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="550" FixedLength="false" Unicode="true" />
+          <Property Name="SoldTillNow" Type="Int32" Nullable="false" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+    <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MarketAccounting_DBModelStoreContainer" CdmEntityContainer="MarketAccounting_DBEntities">
+    <EntitySetMapping Name="Products">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.Product)">
+        <MappingFragment StoreEntitySet="Products">
+          <ScalarProperty Name="ProductId" ColumnName="ProductId" />
+          <ScalarProperty Name="ProductName" ColumnName="ProductName" />
+          <ScalarProperty Name="ProductBuyCost" ColumnName="ProductBuyCost" />
+          <ScalarProperty Name="ProductSellCost" ColumnName="ProductSellCost" />
+          <ScalarProperty Name="BoughtTillNow" ColumnName="BoughtTillNow" />
+          <ScalarProperty Name="SoldTillNow" ColumnName="SoldTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="SlAndBu">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.SlAndBu)">
+        <MappingFragment StoreEntitySet="SlAndBu">
+          <ScalarProperty Name="SlAndBuId" ColumnName="SlAndBuId" />
+          <ScalarProperty Name="TypeId" ColumnName="TypeId" />
+          <ScalarProperty Name="NumberOfProduct" ColumnName="NumberOfProduct" />
+          <ScalarProperty Name="TotalCost" ColumnName="TotalCost" />
+          <ScalarProperty Name="DateTime" ColumnName="DateTime" />
+          <ScalarProperty Name="NameOfCustomer" ColumnName="NameOfCustomer" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="TypeId">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.TypeId)">
+        <MappingFragment StoreEntitySet="TypeId">
+          <ScalarProperty Name="TypeId1" ColumnName="TypeId1" />
+          <ScalarProperty Name="What" ColumnName="What" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Customers">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.Customers)">
+        <MappingFragment StoreEntitySet="Customers">
+          <ScalarProperty Name="CustomerId" ColumnName="CustomerId" />
+          <ScalarProperty Name="CustomerName" ColumnName="CustomerName" />
+          <ScalarProperty Name="BoughtTillNow" ColumnName="BoughtTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="PWYBF">
+      <EntityTypeMapping TypeName="IsTypeOf(MarketAccounting_DBModel.PWYBF)">
+        <MappingFragment StoreEntitySet="PWYBF">
+          <ScalarProperty Name="PWYBFId" ColumnName="PWYBFId" />
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="SoldTillNow" ColumnName="SoldTillNow" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping></edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="False" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="False" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

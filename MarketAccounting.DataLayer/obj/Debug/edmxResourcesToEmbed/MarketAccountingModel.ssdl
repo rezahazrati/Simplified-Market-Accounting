@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Schema Namespace="MarketAccounting_DBModel.Store" Alias="Self" Provider="System.Data.SqlClient" ProviderManifestToken="2012" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+  <EntityContainer Name="MarketAccounting_DBModelStoreContainer">
+    <EntitySet Name="Products" EntityType="MarketAccounting_DBModel.Store.Products" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="SlAndBu" EntityType="MarketAccounting_DBModel.Store.SlAndBu" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="TypeId" EntityType="MarketAccounting_DBModel.Store.TypeId" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="Customers" EntityType="MarketAccounting_DBModel.Store.Customers" store:Type="Tables" Schema="dbo" />
+    <EntitySet Name="PWYBF" EntityType="MarketAccounting_DBModel.Store.PWYBF" store:Type="Tables" Schema="dbo" />
+    <AssociationSet Name="FK_SlAndBu_TypeId" Association="MarketAccounting_DBModel.Store.FK_SlAndBu_TypeId">
+      <End Role="TypeId" EntitySet="TypeId" />
+      <End Role="SlAndBu" EntitySet="SlAndBu" />
+    </AssociationSet>
+  </EntityContainer>
+  <EntityType Name="Products">
+    <Key>
+      <PropertyRef Name="ProductId" />
+    </Key>
+    <Property Name="ProductId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="ProductName" Type="nvarchar" Nullable="false" MaxLength="500" />
+    <Property Name="ProductBuyCost" Type="int" Nullable="false" />
+    <Property Name="ProductSellCost" Type="int" Nullable="false" />
+    <Property Name="BoughtTillNow" Type="int" Nullable="false" />
+    <Property Name="SoldTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="SlAndBu">
+    <Key>
+      <PropertyRef Name="SlAndBuId" />
+    </Key>
+    <Property Name="SlAndBuId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="TypeId" Type="int" Nullable="false" />
+    <Property Name="NumberOfProduct" Type="int" Nullable="false" />
+    <Property Name="TotalCost" Type="int" Nullable="false" />
+    <Property Name="DateTime" Type="datetime" Nullable="false" />
+    <Property Name="NameOfCustomer" Type="nvarchar" Nullable="false" MaxLength="550" />
+  </EntityType>
+  <EntityType Name="TypeId">
+    <Key>
+      <PropertyRef Name="TypeId1" />
+    </Key>
+    <Property Name="TypeId1" Type="int" Nullable="false" />
+    <Property Name="What" Type="nvarchar" Nullable="false" MaxLength="150" />
+  </EntityType>
+  <EntityType Name="Customers">
+    <Key>
+      <PropertyRef Name="CustomerId" />
+    </Key>
+    <Property Name="CustomerId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="CustomerName" Type="nvarchar" Nullable="false" MaxLength="550" />
+    <Property Name="BoughtTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <EntityType Name="PWYBF">
+    <Key>
+      <PropertyRef Name="PWYBFId" />
+    </Key>
+    <Property Name="PWYBFId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+    <Property Name="Name" Type="nvarchar" Nullable="false" MaxLength="550" />
+    <Property Name="SoldTillNow" Type="int" Nullable="false" />
+  </EntityType>
+  <Association Name="FK_SlAndBu_TypeId">
+    <End Role="TypeId" Type="MarketAccounting_DBModel.Store.TypeId" Multiplicity="1" />
+    <End Role="SlAndBu" Type="MarketAccounting_DBModel.Store.SlAndBu" Multiplicity="*" />
+    <ReferentialConstraint>
+      <Principal Role="TypeId">
+        <PropertyRef Name="TypeId1" />
+      </Principal>
+      <Dependent Role="SlAndBu">
+        <PropertyRef Name="TypeId" />
+      </Dependent>
+    </ReferentialConstraint>
+  </Association>
+</Schema>
